@@ -30,6 +30,10 @@ import {
   saveAttachment,
 } from "./attachmentStore.js";
 
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || ""
+).replace(/\/$/, "");
+
 const STORAGE_KEY = "clarity-chat-conversations-v1";
 const THEME_KEY = "clarity-chat-theme";
 const MAX_ATTACHMENTS = 4;
@@ -194,7 +198,7 @@ export default function App() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch("/api/health", { signal: controller.signal })
+    fetch(`${API_BASE_URL}/api/health`, { signal: controller.signal })
       .then(async (response) => {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Backend is unavailable.");
@@ -392,7 +396,7 @@ export default function App() {
     setPendingRetry(null);
 
     try {
-      const response = await fetch("/api/chat", {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         signal: controller.signal,
