@@ -354,6 +354,6 @@ app.use((error, _request, response, _next) => {
   return response.status(500).json({ error: "The server couldn't process this request." });
 });
 
-app.listen(port, "127.0.0.1", () => {
-  console.log(`Chat API listening at http://127.0.0.1:${port} (model: ${model}; API key ${apiKey ? "configured" : "missing"})`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Chat API listening on port ${port}`);
 });
