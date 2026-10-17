@@ -32,7 +32,7 @@ A local, responsive AI chat app built with React, Vite, Express, and Google's of
    npm run dev
    ```
 
-4. Open **http://127.0.0.1:5173** in your browser.
+4. Open **[http://127.0.0.1:5173](https://shadowmind-chi.vercel.app)** in your browser.
 
 The Vite development server proxies `/api` requests to the Express server on port 3001. The backend listens on `127.0.0.1` and never sends the API key to the browser.
 
